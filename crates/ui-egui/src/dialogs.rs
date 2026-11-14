@@ -156,7 +156,7 @@ fn about_body(ui: &mut egui::Ui, t: &Tokens) {
     ));
     ui.add_space(8.0);
     ui.hyperlink_to("github.com/CROC101/crocwork-interface", "https://github.com/CROC101/crocwork-interface");
-    ui.hyperlink_to(tr("Join us on Discord"), "https://github.com/CROC101/crocwork-interface");
+    ui.hyperlink_to(tr("Join us on Discord"), "https://discord.gg/sNYsVbh3v");
     ui.add_space(8.0);
     ui.label(
         RichText::new(tr("Dual-licensed MIT OR Apache-2.0. Made by the crocwork team and community.")).color(t.text_secondary).font(regular(11.0)),
