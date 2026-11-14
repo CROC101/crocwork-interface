@@ -123,7 +123,7 @@ fn files_on_disk_by_kind() {
         .collect();
     assert_eq!(
         kinds,
-        [FileKind::crocwork Interface, FileKind::Fig, FileKind::Sketch, FileKind::Svg, FileKind::Image, FileKind::Image, FileKind::Other, FileKind::Other]
+        [FileKind::FigCraft, FileKind::Fig, FileKind::Sketch, FileKind::Svg, FileKind::Image, FileKind::Image, FileKind::Other, FileKind::Other]
     );
 }
 

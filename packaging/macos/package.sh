@@ -101,20 +101,20 @@ notarize() {
 # The .icns is generated here from the committed PNGs (assets/app-icon/figcraft-<size>.png, made by
 # `cargo xtask icon`); it is never committed.
 ICONS="$ROOT/assets/app-icon"
-ICONSET="$WORK/crocwork Interface.iconset"
+ICONSET="$WORK/FigCraft.iconset"
 mkdir -p "$ICONSET"
 for s in 16 32 128 256 512; do
   cp "$ICONS/figcraft-$s.png" "$ICONSET/icon_${s}x${s}.png"
   cp "$ICONS/figcraft-$((s * 2)).png" "$ICONSET/icon_${s}x${s}@2x.png"
 done
-iconutil -c icns -o "$WORK/crocwork Interface.icns" "$ICONSET"
+iconutil -c icns -o "$WORK/FigCraft.icns" "$ICONSET"
 
 # ---- FigCraft.app ------------------------------------------------------------------------------
 echo "==> assembling $APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 # Executable and icon carry the display name (CFBundleExecutable / CFBundleIconFile).
 cp "$WORK/bin/figcraft" "$APP/Contents/MacOS/crocwork Interface"
-cp "$WORK/crocwork Interface.icns" "$APP/Contents/Resources/crocwork Interface.icns"
+cp "$WORK/FigCraft.icns" "$APP/Contents/Resources/FigCraft.icns"
 cp "$ROOT/NOTICE" "$APP/Contents/Resources/"
 # Licences of the embedded craft-fonts fonts (only when built with CRAFT_FONTS_DIR).
 if [[ -n "${CRAFT_FONTS_DIR:-}" ]]; then

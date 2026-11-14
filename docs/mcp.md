@@ -131,8 +131,8 @@ built-in fonts. Attached, the app's own fonts apply. The browser build has no sy
 Build the CLI first (`cargo build --release -p figcraft-cli`) and use the absolute path to
 `target/release/figcraft-cli`.
 
-The Linux AppImage bundles the CLI: `crocwork Interface.AppImage cli <args>` runs `figcraft-cli <args>`, so
-`/path/to/crocwork Interface.AppImage cli mcp` works wherever `/path/to/figcraft-cli mcp` appears below.
+The Linux AppImage bundles the CLI: `FigCraft.AppImage cli <args>` runs `figcraft-cli <args>`, so
+`/path/to/FigCraft.AppImage cli mcp` works wherever `/path/to/figcraft-cli mcp` appears below.
 
 ### Claude Code
 
