@@ -155,7 +155,7 @@ fn about_body(ui: &mut egui::Ui, t: &Tokens) {
         "Interface design and prototyping. A free, open-source, clean-room design tool written from scratch in Rust, part of the crocwork Crafting Apps.",
     ));
     ui.add_space(8.0);
-    ui.hyperlink_to("getartcraft.com/apps/figcraft", "https://github.com/CROC101/crocwork-interface");
+    ui.hyperlink_to("github.com/CROC101/crocwork-interface", "https://github.com/CROC101/crocwork-interface");
     ui.hyperlink_to(tr("Join us on Discord"), "https://github.com/CROC101/crocwork-interface");
     ui.add_space(8.0);
     ui.label(
