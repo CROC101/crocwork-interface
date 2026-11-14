@@ -1,4 +1,4 @@
-//! FigCraft in the browser.
+//! crocwork Interface in the browser.
 //!
 //! Runs the same [`figcraft_ui_egui::FigApp`] as the desktop app through eframe's web runner
 //! (wgpu: WebGPU where available, WebGL2 otherwise). Build with `trunk build --release` from this
@@ -19,7 +19,7 @@
 //!   server…), but can't host a session. A page served over `https://` reaches only `wss://`
 //!   servers and the same computer (browsers block `ws://` from secure pages); serve it over
 //!   `http://` on a trusted network to reach plain `ws://` hosts on other machines.
-//! - host mode: `?host=parent` (a same-origin page embedding FigCraft in an `<iframe>`) or
+//! - host mode: `?host=parent` (a same-origin page embedding crocwork Interface in an `<iframe>`) or
 //!   `data-host="page"` on the canvas (the page's own document) hands the page the app's files
 //!   instead of downloading them and reports unsaved changes (`host`);
 //! - live sessions: it joins sessions a desktop app hosts (File ▸ Join live session…) but can't

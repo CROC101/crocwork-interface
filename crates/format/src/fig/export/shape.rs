@@ -391,7 +391,7 @@ impl<'d> Exporter<'d> {
             if main_ok != own.is_ok() {
                 // An override can't take its layer off the main's path. So an instance text of
                 // more than one line, on a main that is on a path, stays on that path in the file:
-                // say so rather than the general mismatch (FigCraft's import reads it as plain text).
+                // say so rather than the general mismatch (crocwork Interface's import reads it as plain text).
                 let lines = main_ok && matches!(own, Err(TEXT_PATH_LINES));
                 self.warn(if lines { TEXT_PATH_INSTANCE_LINES } else { TEXT_PATH_INSTANCE });
                 return None;

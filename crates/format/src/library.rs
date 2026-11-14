@@ -98,7 +98,7 @@ pub(crate) fn read<R: Read + Seek>(
 }
 
 /// Read the published library of a `.figcraft` file (only its library entries are read): `None`
-/// when the file was never published, an error when it isn't a FigCraft archive or is damaged.
+/// when the file was never published, an error when it isn't a crocwork Interface archive or is damaged.
 pub fn read_library<R: Read + Seek>(r: R) -> Result<Option<PublishedLibrary>, FormatError> {
     read_library_within(r, u64::MAX)
 }

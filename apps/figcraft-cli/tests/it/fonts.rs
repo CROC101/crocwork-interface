@@ -71,7 +71,7 @@ fn info_lists_the_fonts_a_file_uses_that_are_missing() {
     let (script, file) = (d.join("make.json"), d.join("doc.figcraft"));
     let text =
         |family: &str| json!({"command": "text.create", "params": {"text": "Hamburgefonstiv", "x": 0, "y": 0, "props": {"fontFamily": family}}});
-    std::fs::write(&script, json!([text("FigCraft Missing CLI"), text("FigCraft Missing CLI")]).to_string()).unwrap();
+    std::fs::write(&script, json!([text("crocwork Interface Missing CLI"), text("crocwork Interface Missing CLI")]).to_string()).unwrap();
     let cli = || Command::new(env!("CARGO_BIN_EXE_figcraft-cli"));
     let made = cli().arg("run").arg(&script).arg("--out").arg(&file).output().unwrap();
     assert!(made.status.success(), "{}", String::from_utf8_lossy(&made.stderr));
@@ -79,11 +79,11 @@ fn info_lists_the_fonts_a_file_uses_that_are_missing() {
     let out = cli().arg("info").arg(&file).arg("--json").output().unwrap();
     assert!(out.status.success(), "{}", String::from_utf8_lossy(&out.stderr));
     let v: Value = serde_json::from_slice(&out.stdout).unwrap();
-    assert_eq!(v["missingFonts"], json!([{"family": "FigCraft Missing CLI", "layers": 2}]));
+    assert_eq!(v["missingFonts"], json!([{"family": "crocwork Interface Missing CLI", "layers": 2}]));
 
     let out = cli().arg("info").arg(&file).output().unwrap();
     let shown = String::from_utf8_lossy(&out.stdout);
-    assert!(shown.contains("missing font \"FigCraft Missing CLI\": 2 text layers"), "{shown}");
+    assert!(shown.contains("missing font \"crocwork Interface Missing CLI\": 2 text layers"), "{shown}");
 }
 
 /// A synthetic `.sketch` file: one page with one Helvetica text.

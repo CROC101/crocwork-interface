@@ -10,15 +10,15 @@ use std::net::{Ipv4Addr, SocketAddr};
 use clap::{ArgAction, Args, CommandFactory, FromArgMatches, Parser, Subcommand};
 use figcraft_doc::{PrintSettings, VdCompat};
 
-/// FigCraft without a window
+/// crocwork Interface without a window
 ///
-/// Files: .figcraft (native), .penpot (Penpot 2.x), .json (FigCraft or REST API file JSON), .fig
+/// Files: .figcraft (native), .penpot (Penpot 2.x), .json (crocwork Interface or REST API file JSON), .fig
 /// (best effort; `info` lists what wasn't imported), .sketch (Sketch 48 or newer, best effort),
 /// .svg, .png/.jpg/.webp/.gif/.bmp (open as an image layer).
 #[derive(Parser)]
 #[command(name = "figcraft-cli", bin_name = "figcraft-cli", version, arg_required_else_help = true, after_help = "See docs/cli.md and docs/mcp.md.")]
 pub struct Cli {
-    /// Lay text out with the fonts built into FigCraft only, for renders that match on every
+    /// Lay text out with the fonts built into crocwork Interface only, for renders that match on every
     /// machine (or set FIGCRAFT_NO_SYSTEM_FONTS=1). Otherwise installed fonts are indexed the
     /// first time text is laid out, as in the app
     #[arg(long, global = true)]

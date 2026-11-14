@@ -77,7 +77,7 @@ fn strokes_android_cant_draw_are_their_filled_outline() {
             let paths = paths_of(&out.xml);
             assert!(!out.xml.contains("strokeColor"), "{what}:\n{}", out.xml);
             assert!(!paths.is_empty() && paths.iter().all(|p| p.get("fillColor") == Some("#112233")), "{what}:\n{}", out.xml);
-            // Rings fill even-odd in FigCraft: rewritten, or kept as the rule in exact/ignore.
+            // Rings fill even-odd in crocwork Interface: rewritten, or kept as the rule in exact/ignore.
             let ring = what == "inside" || what == "outside";
             let kept = paths.iter().any(|p| p.get("fillType") == Some("evenOdd"));
             match compat {

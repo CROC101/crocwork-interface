@@ -1,4 +1,4 @@
-//! `color()` and `color-mix()` colours (#1550): read where they map to a FigCraft colour, a note
+//! `color()` and `color-mix()` colours (#1550): read where they map to a crocwork Interface colour, a note
 //! and a grey (never a silent black) where they don't, and no panic on garbage.
 
 use figcraft_color::{Color, ColorProfile, Paint};

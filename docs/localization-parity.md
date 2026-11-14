@@ -2,7 +2,7 @@
 
 > **Last reviewed:** 2026-10-10 · **Last updated:** 2026-11-05 · **Change:** minor (a right-to-left UI language (Arabic) mirrors the window: the icon rail and layers panel on the right, the Design panel on the left, popovers beside it over the canvas, egui's scroll bars, submenus and checkboxes mirrored; `FIGCRAFT_EMBED_SCRIPTS` embeds other scripts' craft-fonts faces in a web build, so Arabic and Persian documents draw there (#1902); documents: a paragraph's base direction can be forced with Text ▸ Text direction, as Add right-to-left text says (#1830); Bosnian draft catalog, one/few/other plurals; German terminology corrections (M10): gradient stops, OpenType stylistic sets and the Home-screen preference; partial review, catalog remains a draft; Arabic draft catalog, count-neutral plurals and web font gate; Thai draft catalog and Thai UI fonts; a missing translation fails no check: `cargo xtask i18n-report` lists them; Vietnamese draft catalog; string counts re-measured: 2,352 entries; Russian and Turkish catalogs reviewed by native speakers, Russian one/few/many plurals; Czech and Indonesian drafts; the Japanese draft completed; counts re-measured; Windows UI language from the first preferred language; draft catalogs catch up: every draft translates every string again; Simplified Chinese draft catalog; macOS finds its downloadable CJK system fonts (#406); string counts re-measured: 2,272 entries, the drafts at 95–99%; Swedish command labels and menu wordings; Russian, Swedish, Turkish, Czech and Indonesian listed; a duplicated paragraph removed) · **Target:** Figma Design (desktop app 126.10.7)
 
-FigCraft's interface has a localization layer with an English catalog, a Russian catalog reviewed
+crocwork Interface's interface has a localization layer with an English catalog, a Russian catalog reviewed
 by a native speaker, and Spanish (with a Latin American overlay), French, German, Brazilian
 Portuguese, Japanese, Korean, Simplified Chinese, Traditional Chinese, Indonesian, Vietnamese, Bosnian and Czech drafts (machine-drafted,
 waiting for native speakers' review), plus Swedish and Turkish catalogs. This page lists the twelve key
@@ -18,7 +18,7 @@ browser's page translation. The `.lproj` folders in `/Applications/Figma.app` (6
 Electron/Chromium locale packs, not Figma's own UI languages. Text *content* in any script is
 supported by both apps (CJK, Arabic and Devanagari shaping, IME); Figma has no vertical text.
 
-## What FigCraft has (measured 2026-10-22, from source)
+## What crocwork Interface has (measured 2026-10-22, from source)
 
 - **Layer:** one TOML catalog per language in `crates/ui-egui/locales/`, baked into the binary by
   the UI crate's build script (desktop and web; nothing read at run time). Keys are the English text

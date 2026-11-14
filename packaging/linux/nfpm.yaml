@@ -14,8 +14,8 @@ release: 1
 section: graphics
 priority: optional
 maintainer: ${FIGCRAFT_MAINTAINER}
-vendor: Learning Machines LLC
-homepage: https://getartcraft.com/apps/figcraft
+vendor: crocwork
+homepage: https://github.com/CROC101/crocwork-interface
 license: MIT OR Apache-2.0
 description: |-
   Open-source, native interface design and prototyping tool.

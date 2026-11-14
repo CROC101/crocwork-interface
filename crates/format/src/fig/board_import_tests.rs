@@ -557,7 +557,7 @@ fn shape_node(kind: &'static str) -> Kv<'static> {
     layer
 }
 
-/// On a whiteboard a diamond is a native shape: FigCraft draws its outline and its text sits inside.
+/// On a whiteboard a diamond is a native shape: crocwork Interface draws its outline and its text sits inside.
 #[test]
 fn a_jam_diamond_is_a_native_shape_drawn_by_figcraft() {
     let (doc, warnings) = jam(shape_node("DIAMOND"));
@@ -599,7 +599,7 @@ fn a_jam_shape_past_the_size_cap_draws_its_outline_at_the_cap() {
     assert_eq!(*network, figcraft_doc::VectorNetwork::from_path(&figcraft_doc::BoardShape::Diamond.path(1e6, 1e6)));
 }
 
-/// 23 of FigJam's 30 shape kinds have a FigCraft outline; the other 7 stay frames and say which.
+/// 23 of FigJam's 30 shape kinds have a crocwork Interface outline; the other 7 stay frames and say which.
 #[test]
 fn every_figjam_shape_kind_maps_or_stays_a_frame() {
     let kinds = [
@@ -645,7 +645,7 @@ fn every_figjam_shape_kind_maps_or_stays_a_frame() {
             assert_eq!(frame.board, Some(figcraft_doc::BoardItem::Shape { shape }), "{kind}");
         } else {
             assert!(frame.board.is_none(), "{kind}");
-            assert!(warnings.iter().any(|w| w.contains(kind) && w.contains("no FigCraft outline")), "{kind}: {warnings:?}");
+            assert!(warnings.iter().any(|w| w.contains(kind) && w.contains("no crocwork Interface outline")), "{kind}: {warnings:?}");
         }
     }
     assert_eq!(mapped, 23);

@@ -794,7 +794,7 @@ impl<'a> Ctx<'a> {
         }
     }
 
-    /// The `board` field (a FigCraft extension): what the object is on a board. A sticky or shape
+    /// The `board` field (a crocwork Interface extension): what the object is on a board. A sticky or shape
     /// is set at once; anything else, or junk, is ignored with a warning.
     fn board_item(&mut self, n: &mut Node, b: &'a Value) {
         // A sticky or shape is a frame holding its layers: on anything else it is ignored.

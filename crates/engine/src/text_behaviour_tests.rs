@@ -167,7 +167,7 @@ fn ime_delete_surrounding_bytes_is_exact_and_one_undo_step() {
 #[test]
 fn ime_delete_surrounding_bytes_keeps_partial_characters_and_selection() {
     // The fork deletes the byte range exactly and leaves a character the range only partly
-    // covers. FigCraft's editor counts characters with the same rule (mirroring egui's
+    // covers. crocwork Interface's editor counts characters with the same rule (mirroring egui's
     // `surrounding_bytes_to_chars`), including around a selection.
     let mut s = Session::new();
     let t = text(&mut s, "\u{e9}x\u{1F600}", json!({"fontSize": 24}));
@@ -652,7 +652,7 @@ fn superscript_and_subscript_are_synthesised_without_glyphs_for_them() {
 /// A synthetic monospaced TrueType font (outline-less glyphs, every printable ASCII character 500 of
 /// 1000 units wide), loaded into the font database so text measures the same on every machine.
 fn test_mono_font() -> &'static str {
-    const FAMILY: &str = "FigCraft Test Mono";
+    const FAMILY: &str = "crocwork Interface Test Mono";
     static LOADED: std::sync::OnceLock<()> = std::sync::OnceLock::new();
     LOADED.get_or_init(|| {
         let families = figcraft_text::load_font_bytes(synthetic_mono_font(FAMILY));

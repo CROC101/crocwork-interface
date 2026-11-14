@@ -95,7 +95,7 @@ fn listed(web: String, files: Vec<figcraft_collab::message::TeamFile>) -> TeamLi
 
 impl Session {
     /// Ask the server in Preferences for its team list (none asked when online sharing is off,
-    /// without the network, or of the public server FigCraft ships with: it keeps none).
+    /// without the network, or of the public server crocwork Interface ships with: it keeps none).
     pub(crate) fn team_refresh(&mut self) -> Result<()> {
         let server = plain_server(&self.prefs.publish_server);
         let public = option_env!("FIGCRAFT_DEFAULT_SERVER").is_none() && same_server(&server, DEFAULT_SERVER);

@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-  Build, sign and package FigCraft for Windows.
+  Build, sign and package crocwork Interface for Windows.
 
 .DESCRIPTION
   Produces, in $env:DIST (default: dist/release):
@@ -60,7 +60,7 @@ if (-not $env:FIGCRAFT_BUILD_DATE) { $env:FIGCRAFT_BUILD_DATE = (Get-Date).ToUni
 $HasCli = Test-Path (Join-Path $Root 'apps\figcraft-cli\Cargo.toml')
 $Bins = @('figcraft'); if ($HasCli) { $Bins += 'figcraft-cli' }
 
-Write-Output "FigCraft $Version for Windows $Arch ($Target): $($Bins -join ', ')"
+Write-Output "crocwork Interface $Version for Windows $Arch ($Target): $($Bins -join ', ')"
 
 if (-not $SkipBuild) {
   # Static CRT: no VC++ redistributable needed. Scoped to the target so host build scripts and
@@ -115,7 +115,7 @@ if ($env:CRAFT_FONTS_DIR) {
 # ---- end font notices for the MSI --------------------------------------------------------------
 
 # ---- MSI ---------------------------------------------------------------------------------------
-# The setup wizard's art, drawn here from the app icon so the MSI shows FigCraft rather than
+# The setup wizard's art, drawn here from the app icon so the MSI shows crocwork Interface rather than
 # WiX's stock bitmaps: a 493x58 banner across the top of the inner pages (the page title is drawn
 # over its left side, so that stays white) and a 493x312 backdrop for the Welcome and Finish pages
 # (their text sits on the right; the left 164 px are ours). Both must be 24-bit BMPs.
@@ -190,8 +190,8 @@ if ($env:CRAFT_FONTS_DIR) {
   }
 }
 # A `portable` file next to figcraft.exe keeps its settings, recovery copies and plugins in
-# config\ beside it instead of %APPDATA%\FigCraft (#1320). The first start copies the
-# preferences an installed FigCraft kept there, if any.
+# config\ beside it instead of %APPDATA%\crocwork Interface (#1320). The first start copies the
+# preferences an installed crocwork Interface kept there, if any.
 New-Item -ItemType File -Force -Path (Join-Path $Portable 'portable') | Out-Null
 $Zip = Join-Path $Dist "figcraft-$Version-windows-$Arch-portable.zip"
 Remove-Item -Force $Zip -ErrorAction SilentlyContinue

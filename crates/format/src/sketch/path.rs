@@ -160,7 +160,7 @@ pub(crate) fn cut_corners(l: &Value) -> Option<Value> {
 }
 
 /// A path, star, polygon or triangle layer: a star or polygon while its points are still the
-/// generated ones (same as FigCraft's, within half a percent), else an editable vector.
+/// generated ones (same as crocwork Interface's, within half a percent), else an editable vector.
 pub(crate) fn shape(cx: &mut Cx, l: &Value, w: f64, h: f64) -> Option<Shape> {
     // Inside a shape group the group's fill decides; a shape of its own, its style.
     let style = l.get("style");
@@ -317,7 +317,7 @@ fn combined(cx: &mut Cx, l: &Value, kids: &[Value], parent: Affine, world: Affin
             continue;
         }
         // Sketch draws a shape group in the group's style only. Its operands' own borders go: a
-        // FigCraft operand with only a stroke gives its stroke's band, not its area.
+        // crocwork Interface operand with only a stroke gives its stroke's band, not its area.
         let mut operands = operands;
         for o in &mut operands {
             unstroked(o, 0);

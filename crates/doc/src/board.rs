@@ -472,7 +472,7 @@ impl Stamp {
         }
     }
 
-    /// The mark, drawn for FigCraft from lines, arcs and simple outlines.
+    /// The mark, drawn for crocwork Interface from lines, arcs and simple outlines.
     pub fn mark(self) -> &'static [MarkPart] {
         match self {
             // A cuff and a raised hand with its thumb up.

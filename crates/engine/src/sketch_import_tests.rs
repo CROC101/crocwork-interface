@@ -232,7 +232,7 @@ fn local_sketch_samples_open() {
 }
 
 /// Local only (`FIGCRAFT_SKETCH_SAMPLES` and `FIGCRAFT_SKETCHTOOL`, the path of Sketch's
-/// `sketchtool`): every artboard of each sample (Sketch 48 and newer) drawn by FigCraft is compared
+/// `sketchtool`): every artboard of each sample (Sketch 48 and newer) drawn by crocwork Interface is compared
 /// with Sketch's own export of it. Prints the share of pixels that differ per artboard (a channel
 /// off by more than 40, on white); fails past 10% (a broken artboard, not antialiasing or fonts).
 #[test]
@@ -422,12 +422,12 @@ fn sketch_resized_stack_instances_reflow() {
 fn sketch_natural_line_rule() {
     use crate::cmd::file::sketch_line;
     // Helvetica Neue Medium (975 + 217 of 1000, a gap of 29 left out) at 17 px: 16.575 → 17 and
-    // 3.689 → 4, a line of 21 with the baseline at 17. FigCraft puts the baseline at
+    // 3.689 → 4, a line of 21 with the baseline at 17. crocwork Interface puts the baseline at
     // (21 − 20.264) / 2 + 16.575 = 16.943, so the text moves down 0.057.
     let (line, down) = sketch_line(975.0, 217.0, 1000.0, "Helvetica Neue", 17.0);
     assert!((line - 21.0).abs() < 1e-9 && (down - 0.057).abs() < 1e-9, "{line} {down}");
     // Helvetica at 100 px: 77 + 23 and a fifth more, 120, all of it above: the baseline at 97
-    // where FigCraft centres it at 87.
+    // where crocwork Interface centres it at 87.
     let (line, down) = sketch_line(1577.0, 471.0, 2048.0, "helvetica", 100.0);
     assert!((line - 120.0).abs() < 1e-9 && (down - 10.0).abs() < 0.05, "{line} {down}");
     assert_eq!(sketch_line(0.0, 0.0, 0.0, "X", 12.0), (0.0, 0.0), "no metrics, no change");

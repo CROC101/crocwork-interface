@@ -1,6 +1,6 @@
 # Penpot import and export
 
-FigCraft reads and writes Penpot 2.x ZIP archives (`penpot/export-files`, version 1)
+crocwork Interface reads and writes Penpot 2.x ZIP archives (`penpot/export-files`, version 1)
 in Rust. Import and export run offline on desktop, CLI, MCP and WASM.
 
 ## Open and save
@@ -43,7 +43,7 @@ figcraft-cli export editable.figcraft -o out.penpot --format penpot
 Penpot source ids and selected source properties remain in layer metadata.
 Fingerprints let export reuse unchanged text, layout, strokes, interactions and
 tokens instead of regenerating them. Edited supported values are generated from
-FigCraft's model. New layers receive deterministic UUIDs.
+crocwork Interface's model. New layers receive deterministic UUIDs.
 
 ## Fonts
 
@@ -71,7 +71,7 @@ destination Penpot team.
   trees. Dense arrays cannot bypass it with small compressed or serialized sizes.
 - Token expressions share nesting and work budgets across aliases and theme
   modes. Grid-cell membership is indexed once per parent.
-- Raw SVG uses FigCraft's SVG importer where possible and retains source metadata.
+- Raw SVG uses crocwork Interface's SVG importer where possible and retains source metadata.
   Complex masks and unsupported geometry may remain placeholders with warnings.
 - Penpot export approximates unsupported paints/effects, custom dashes and
   transitions; unsupported actions and triggers are reported. Slices are omitted.

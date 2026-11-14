@@ -212,7 +212,7 @@ impl<'d> Exporter<'d> {
             let mut values = Vec::new();
             for m in &c.modes {
                 let (Some(mode), Some(val)) = (self.mode_ids.get(&(c.id.as_str(), m.id.as_str())), v.values.get(&m.id)) else { continue };
-                // The Figma binary has no encoding FigCraft writes for calculations: the colour
+                // The Figma binary has no encoding crocwork Interface writes for calculations: the colour
                 // they show in this mode goes out as a plain colour value.
                 let Some(val) = doc.variables.flattened(v, &m.id, val) else {
                     self.warn(crate::CALCULATIONS_LEFT_OUT);

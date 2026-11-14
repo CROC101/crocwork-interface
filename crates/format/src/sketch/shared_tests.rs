@@ -1,4 +1,4 @@
-//! Sketch shared styles → FigCraft styles; Color Variables (swatches) → colour variables.
+//! Sketch shared styles → crocwork Interface styles; Color Variables (swatches) → colour variables.
 
 use figcraft_doc::color::PaintKind;
 use figcraft_doc::{Document, Node, StyleKind};

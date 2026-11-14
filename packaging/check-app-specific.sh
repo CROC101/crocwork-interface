@@ -20,5 +20,5 @@ for name in ("ai.storyteller.figcraft.yml", "ai.storyteller.figcraft.bundle.yml"
     manifests.append(manifest)
 for key in ("runtime", "runtime-version", "sdk", "finish-args"):
     assert manifests[0][key] == manifests[1][key], f"Flatpak manifests disagree on {key}"
-print("FigCraft package identity ok")
+print("crocwork Interface package identity ok")
 PYEOF

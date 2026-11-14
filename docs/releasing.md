@@ -1,24 +1,24 @@
-# Releasing FigCraft
+# Releasing crocwork Interface
 
 Every push to the `release` branch runs `.github/workflows/release.yml`. The workflow builds
 installers for macOS, Windows, Linux and the web, plus a FreeBSD tarball and the collaboration
-server for Linux, then creates or updates a **draft** GitHub Release named `FigCraft v<version>`.
+server for Linux, then creates or updates a **draft** GitHub Release named `crocwork Interface v<version>`.
 Nobody sees a draft until a maintainer publishes it.
 
-This is FigCraft's copy of the shared [release playbook](release-playbook.md) (PhotoCraft is the
-reference implementation). User-facing names say **FigCraft**. Files, binaries and ids stay
+This is crocwork Interface's copy of the shared [release playbook](release-playbook.md) (PhotoCraft is the
+reference implementation). User-facing names say **crocwork Interface**. Files, binaries and ids stay
 lowercase (`figcraft-<version>-<platform>-<arch>.<ext>`, `ai.storyteller.figcraft`).
 
-## FigCraft's names
+## crocwork Interface's names
 
 | Thing | Value |
 |---|---|
-| Display name | FigCraft |
+| Display name | crocwork Interface |
 | Packages / binaries | `figcraft` (app), `figcraft-cli` (headless CLI), `figcraft-web` (browser) |
 | Bundle / app id | `ai.storyteller.figcraft` (CLI signing identifier `ai.storyteller.figcraft-cli`) |
 | Native document | `.figcraft`, MIME `application/x-figcraft`, UTI `ai.storyteller.figcraft.document` |
 | Also opens | `.svg`, `.png`, `.jpg`/`.jpeg` ("Open with", never the default app) |
-| WiX UpgradeCode | `7F8B9827-D065-41B7-A514-2A454B21F484` (fixed forever; never reuse it in another app) |
+| WiX UpgradeCode | `5B6EC6EA-121E-5BC1-9365-97AF50957673` (fixed forever; never reuse it in another app) |
 | Linux categories | `Graphics;2DGraphics;VectorGraphics;X-Design;` (`Design` isn't a registered freedesktop category, so `desktop-file-validate` rejects it) |
 
 ## Cutting a release
@@ -35,7 +35,7 @@ lowercase (`figcraft-<version>-<platform>-<arch>.<ext>`, `ai.storyteller.figcraf
    alias.) Commit `Cargo.toml` + `Cargo.lock`.
 2. **Fast-forward `release` to `main`** and push (release managers only; the ruleset enforces it).
    The workflow starts by itself.
-3. **Wait for the draft** (`FigCraft v0.2.0`, tagged `v0.2.0` on the pushed commit) with every
+3. **Wait for the draft** (`crocwork Interface v0.2.0`, tagged `v0.2.0` on the pushed commit) with every
    artifact and `SHA256SUMS.txt`. Notes are generated from the merged PRs.
 4. **Check it.** Any `::warning::` in the job summaries means a signing secret was missing and
    that artifact is unsigned: fix the secret and re-run, don't publish.
@@ -120,7 +120,7 @@ validate the emitted Inter Regular/SemiBold and Noto Sans Georgian Regular faces
 a missing required face, style or asset fails the required web build. Excluded Adobe rows
 are skipped before resolving their asset paths.
 Native builds retain the permitted Latin presentation faces. Source Sans 3 and Source Serif 4
-are filtered on every target under FigCraft's asset policy. The web build keeps its smaller
+are filtered on every target under crocwork Interface's asset policy. The web build keeps its smaller
 allowlist: Inter, Noto Sans Georgian and Archivo SemiBold when supplied. A distribution whose
 users write another script adds the manifest families it needs, comma-separated, with
 `FIGCRAFT_WEB_FONTS` (`FIGCRAFT_WEB_FONTS="Noto Sans Thai" trunk build --release`); a named family
@@ -132,7 +132,7 @@ under the size gate in `packaging/web/package.sh`. Packages carry each embedded 
 
 `packaging/macos/package.sh [--arch universal|aarch64|x86_64]` builds both Apple targets with
 `MACOSX_DEPLOYMENT_TARGET=11.0`, joins them with `lipo` and assembles `FigCraft.app`
-(`Contents/MacOS/FigCraft`, `Contents/Resources/FigCraft.icns`, `Info.plist` from
+(`Contents/MacOS/crocwork Interface`, `Contents/Resources/crocwork Interface.icns`, `Info.plist` from
 `Info.plist.in`). The `.icns` is generated at packaging time with `iconutil` from the committed
 `assets/app-icon/figcraft-<size>.png` (made by `cargo xtask icon`); it is never committed.
 Signing goes inside-out with the hardened runtime and a timestamp (empty entitlements), then the
@@ -173,7 +173,7 @@ shared-mime-info file for `.figcraft`) and builds every format from it: `.tar.gz
 libraries as dependencies); and an `.AppImage` with update information and a `.zsync`, whose
 `AppRun` registers the desktop entry and icons on launch so Wayland docks show the right icon
 (`FIGCRAFT_NO_DESKTOP_INTEGRATION=1` opts out; covered by `apprun-test.sh`) and runs the bundled
-`figcraft-cli` for `FigCraft.AppImage cli <args>`.
+`figcraft-cli` for `crocwork Interface.AppImage cli <args>`.
 `flatpak-bundle.sh` repackages the tarball into a `.flatpak` with
 `flatpak/ai.storyteller.figcraft.bundle.yml` (freedesktop 26.08). `flatpak/ai.storyteller.figcraft.yml`
 is the from-source manifest for a Flathub submission (not built in CI; vendor crates with

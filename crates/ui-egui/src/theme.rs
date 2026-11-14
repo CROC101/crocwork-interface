@@ -54,7 +54,7 @@ pub struct Tokens {
     pub focus: Color32,
 }
 
-/// FigCraft's brand green for solid surfaces.
+/// crocwork Interface's brand green for solid surfaces.
 pub const BRAND: Color32 = Color32::from_rgb(0x02, 0xDA, 0x96);
 /// Contrast-safe green for thin selection outlines and white-on-green labels.
 /// It reaches 4.5:1 on white and 3:1 on the dark canvas.

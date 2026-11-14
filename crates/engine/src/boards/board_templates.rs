@@ -1,7 +1,7 @@
 //! Board templates: ready-made layouts (a retrospective, a brainstorm, a weekly planner, a flow
 //! chart, a kanban board) placed on a board as ordinary board objects in one undo step. They are
 //! built in code by running the board commands, so everything in them edits like anything else on
-//! the board; their wording is FigCraft's own.
+//! the board; their wording is crocwork Interface's own.
 
 use std::sync::Arc;
 

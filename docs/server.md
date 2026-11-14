@@ -1,6 +1,6 @@
 # figcraft-server
 
-`figcraft-server` keeps FigCraft files for a team and serves their live sessions. A file published
+`figcraft-server` keeps crocwork Interface files for a team and serves their live sessions. A file published
 to it stays there when everyone has left; people open it with a **share link** that lets them
 **edit** it or only **view** it. Edits are kept as a snapshot plus a log of what changed, so a
 restart (or a crash) loses nothing that was confirmed, and apps reconnect where they were. It is
@@ -76,7 +76,7 @@ and the date the server deletes the file unless someone opens it.
 
 **Share ▸ Online ▸ Start sharing** in the app (`collab.share`) is the short way to do all of the
 above on a server open to the public: it publishes the open file to the server in **Preferences ▸
-Server for online sharing** (the FigCraft server unless you put yours there; Reset goes back; empty
+Server for online sharing** (the crocwork Interface server unless you put yours there; Reset goes back; empty
 turns online sharing off), then shows a **join code** such as `K7M-2QX-9TD` in place of the links.
 Someone else types it under **Share ▸ Join with a code** (or on the home screen, or
 `collab.join {code}`) with the same server in their Preferences, and is in the file. The popover
@@ -151,7 +151,7 @@ screen lists them under **Online**:
   can't be reached the copy opens as an unsaved document, as before.
 
 The owner token is a password for that one file: it is kept only in the preferences file of your
-user account (`state.json` in FigCraft's settings folder), is never logged, and never appears in
+user account (`state.json` in crocwork Interface's settings folder), is never logged, and never appears in
 what commands return (`collab.files` says `hasOwnerToken: true`). Whoever can read that file can
 manage your online files; a list of at most 200 files is kept (the one opened longest ago makes
 room). The files are the ones published **from this computer**: another computer of yours doesn't
@@ -180,7 +180,7 @@ someone in, so keep it off on a server open to anyone.
   only published, or shared with links that have no code, aren't listed. The list names each file,
   when it last changed and how many people are in it, most recently changed first (at most 500).
 - **In the app.** Home ▸ Online asks the server in **Preferences ▸ Server for online sharing** for
-  its list each time it opens (not the public server FigCraft ships with, which keeps none) and
+  its list each time it opens (not the public server crocwork Interface ships with, which keeps none) and
   shows it below your own online files, under **Shared by your team on …**. Clicking a row joins
   the file. Scripts and agents read it from `collab.files {refresh: true}` (`team`).
 - **Links without a secret.** A file of the list is named by the server and the file:
@@ -287,8 +287,8 @@ port as everything else; no other service is involved.
   every version until it is unpublished, and lists the latest.
 - **What the server checks** before keeping a bundle: its size (`max_plugin_mb`), that it decodes
   (an uncompressed format: nothing expands), that its manifest parses and asks for a plugin API this
-  server's FigCraft runs, a version of one to four numbers newer than the one kept, that the module
-  is WebAssembly that compiles and imports only what FigCraft's sandbox provides (it is never run on
+  server's crocwork Interface runs, a version of one to four numbers newer than the one kept, that the module
+  is WebAssembly that compiles and imports only what crocwork Interface's sandbox provides (it is never run on
   the server), and that asset names are plain file names. Then the caps: `max_plugins` versions in
   all and `max_plugins_mb` of bundles.
 - **Downloads** carry the bundle's SHA-256, which the app checks before reading it, and which the
@@ -623,7 +623,7 @@ upgrades the binary and restarts the server only when something changed.
    ```sh
    ssh root@figcraft.example.com
    VERSION=$(curl -fsSL https://api.github.com/repos/storytold/figcraft/releases/latest | sed -n 's/.*"tag_name": *"v\([^"]*\)".*/\1/p')
-   curl -fLO "https://github.com/storytold/figcraft/releases/download/v$VERSION/figcraft-server-$VERSION-linux-$(uname -m).tar.gz"
+   curl -fLO "https://github.com/CROC101/crocwork-interface/releases/download/v$VERSION/figcraft-server-$VERSION-linux-$(uname -m).tar.gz"
    tar -xzf figcraft-server-*.tar.gz && cd figcraft-server-*/
    sudo ./install.sh --host figcraft.example.com --email abuse@example.com --terms https://example.com/figcraft-terms
    ```
@@ -643,7 +643,7 @@ upgrades the binary and restarts the server only when something changed.
    the newer source over and run it again.
 4. Check it: `curl https://figcraft.example.com/healthz` answers `ok` once Caddy has its
    certificate (a minute after DNS is right); `journalctl -u figcraft-server -f` shows the log.
-5. In FigCraft, **Share ▸ Publish to server…** with `wss://figcraft.example.com/`. Moderate with
+5. In crocwork Interface, **Share ▸ Publish to server…** with `wss://figcraft.example.com/`. Moderate with
    the commands it printed (`sudo -u figcraft figcraft-server --config /etc/figcraft-server/server.toml
    files list --sort size`, `reports`, `block-ip`).
 6. Point an uptime monitor at `https://figcraft.example.com/healthz`, copy
@@ -663,8 +663,8 @@ release's `SHA256SUMS.txt`:
 ```sh
 VERSION=$(curl -fsSL https://api.github.com/repos/storytold/figcraft/releases/latest | sed -n 's/.*"tag_name": *"v\([^"]*\)".*/\1/p')
 NAME="figcraft-server-$VERSION-linux-$(uname -m)"
-curl -fLO "https://github.com/storytold/figcraft/releases/download/v$VERSION/$NAME.tar.gz"
-curl -fLO "https://github.com/storytold/figcraft/releases/download/v$VERSION/SHA256SUMS.txt"
+curl -fLO "https://github.com/CROC101/crocwork-interface/releases/download/v$VERSION/$NAME.tar.gz"
+curl -fLO "https://github.com/CROC101/crocwork-interface/releases/download/v$VERSION/SHA256SUMS.txt"
 sha256sum --ignore-missing -c SHA256SUMS.txt
 tar -xzf "$NAME.tar.gz" && cd "$NAME"
 sudo install -m 755 figcraft-server /usr/local/bin/
@@ -676,7 +676,7 @@ or from source (it needs a C compiler for the TLS library; the example files are
 ```sh
 sudo apt install -y build-essential git curl
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && . "$HOME/.cargo/env"
-git clone https://github.com/storytold/figcraft && cd figcraft
+git clone https://github.com/CROC101/crocwork-interface && cd figcraft
 cargo build --release --locked -p figcraft-server
 sudo install -m 755 target/release/figcraft-server /usr/local/bin/
 cd packaging/server
@@ -845,7 +845,7 @@ sudo systemctl start figcraft-server
   Everything published is checked in full and never run on the server; a bundle's name on disk is
   its hash, so nothing a publisher chooses reaches the file system; downloads are hash-checked at
   both ends and share a bandwidth budget. Installing still means trusting the publisher: a plugin
-  runs in FigCraft's sandbox with the permissions its manifest asks for, which the app shows before
+  runs in crocwork Interface's sandbox with the permissions its manifest asks for, which the app shows before
   it installs anything.
 - **Not end-to-end encrypted**: the server reads every file it keeps (it validates and stores them);
   so can its operator.

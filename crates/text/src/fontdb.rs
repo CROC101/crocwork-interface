@@ -137,7 +137,7 @@ impl std::fmt::Debug for Face {
 
 impl Face {
     /// The tracking the font's `trak` table gives text of `size` (pixels per glyph; 0 without a
-    /// table): Apple's platform text engine adds it on its own, FigCraft's doesn't.
+    /// table): Apple's platform text engine adds it on its own, crocwork Interface's doesn't.
     pub fn tracking(&self, size: f64) -> f64 {
         let (Some(first), Some(last)) = (self.track.first(), self.track.last()) else { return 0.0 };
         if !size.is_finite() || self.upem <= 0.0 {

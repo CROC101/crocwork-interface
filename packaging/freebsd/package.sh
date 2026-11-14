@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Build and package FigCraft for FreeBSD:
+# Build and package crocwork Interface for FreeBSD:
 #
 #   $DIST/figcraft-<version>-freebsd-<arch>.tar.gz   (arch: x86_64 or aarch64) a /usr/local-style tree:
 #       figcraft-<version>-freebsd-<arch>/{bin, share/applications, share/icons, share/mime,
@@ -63,7 +63,7 @@ if [[ "$DRY_RUN" = 0 ]] && [[ "$(uname -s)" != FreeBSD ]]; then
 fi
 BASENAME="figcraft-$VERSION-freebsd-$ARCH"
 
-echo "==> FigCraft $VERSION for FreeBSD $ARCH"
+echo "==> crocwork Interface $VERSION for FreeBSD $ARCH"
 
 # The release VM has 12 GB; full parallelism on the biggest crates runs it out of memory.
 export CARGO_BUILD_JOBS="${CARGO_BUILD_JOBS:-4}"

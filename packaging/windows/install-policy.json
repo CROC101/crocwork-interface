@@ -1,7 +1,7 @@
 {
   "id": "figcraft",
-  "name": "FigCraft",
-  "upgradeCode": "7F8B9827-D065-41B7-A514-2A454B21F484",
+  "name": "crocwork Interface",
+  "upgradeCode": "5B6EC6EA-121E-5BC1-9365-97AF50957673",
   "sources": [
     "figcraft.wxs"
   ],
@@ -65,7 +65,7 @@
       "-1",
       "Software\\Classes\\Applications\\figcraft.exe",
       "FriendlyAppName",
-      "FigCraft"
+      "crocwork Interface"
     ],
     [
       "-1",
@@ -117,7 +117,7 @@
     ],
     [
       "-1",
-      "Software\\FigCraft",
+      "Software\\crocwork Interface",
       "InstallDir",
       "[INSTALLFOLDER]"
     ]

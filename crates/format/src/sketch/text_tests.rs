@@ -193,7 +193,7 @@ fn embedded_fonts_are_reported() {
 }
 
 /// Where Sketch puts a line's extra height: above the text (`lineSpacingBehaviour` 0), below it
-/// (1) or around it (2, like FigCraft); the text layer moves by the difference.
+/// (1) or around it (2, like crocwork Interface); the text layer moves by the difference.
 #[test]
 fn line_spacing_behaviour_moves_text() {
     let mk = |name: &str, beh: i64| {

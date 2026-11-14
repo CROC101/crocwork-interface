@@ -1,9 +1,9 @@
-//! `window.figcraft`: the page command API (`craft-web-api`, storytold/craft-libs#413) plus FigCraft's
+//! `window.figcraft`: the page command API (`craft-web-api`, storytold/craft-libs#413) plus crocwork Interface's
 //! own file functions.
 //!
 //! The crate installs `request`, `execute`, `commands`, `docInspect`, `uiInspect` and `screenshot`
 //! over the same JSON methods as the desktop control server (`docs/control-protocol.md`), as
-//! promises with a timeout, so an agent driving FigCraft in a browser tab (or an `<iframe>` in
+//! promises with a timeout, so an agent driving crocwork Interface in a browser tab (or an `<iframe>` in
 //! another app) uses the same commands as the CLI and the MCP server:
 //!
 //! ```js
@@ -13,7 +13,7 @@
 //! const {data} = await figcraft.screenshot()                            // the canvas as PNG (base64)
 //! ```
 //!
-//! FigCraft adds, on the same object:
+//! crocwork Interface adds, on the same object:
 //!
 //! ```js
 //! await figcraft.openFile("home.fig", bytes)                            // `file.open` with the bytes
@@ -154,7 +154,7 @@ fn set_fn(obj: &js_sys::Object, name: &str, f: JsValue) -> Result<(), JsValue> {
     js_sys::Reflect::set(obj, &name.into(), &f).map(|_| ())
 }
 
-/// Install `window.figcraft`: the crate's functions, then FigCraft's own.
+/// Install `window.figcraft`: the crate's functions, then crocwork Interface's own.
 pub fn install() -> Result<(), JsValue> {
     let request: Request = Rc::new(|method, params| send(&method, params));
     Rc::new(PageApi::new(APP, Methods::default(), request)).install()?;

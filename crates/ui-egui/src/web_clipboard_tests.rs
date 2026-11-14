@@ -146,7 +146,7 @@ fn text_copied_elsewhere_after_our_copy_still_pastes_as_text() {
 
 #[test]
 fn copying_text_layers_puts_their_text_on_the_clipboard() {
-    // #808: other apps get a text layer's text, not its SVG; FigCraft still pastes the layers.
+    // #808: other apps get a text layer's text, not its SVG; crocwork Interface still pastes the layers.
     let mut p = Page::new();
     let a = p.app.session.execute("text.create", &json!({"text": "Hello", "x": 0, "y": 200})).unwrap();
     let b = p.app.session.execute("text.create", &json!({"text": "World", "x": 0, "y": 300})).unwrap();

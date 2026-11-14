@@ -368,7 +368,7 @@ fn linear_gradients_are_square_in_pixels() {
 // Rules below were read off Sketch's own renders (sketchtool) of files built for each case.
 
 /// Sketch's blur radius is the blur's standard deviation (Gaussian, background and motion blurs);
-/// FigCraft's radius is twice it. A zoom blur stays a plain blur of half its radius.
+/// crocwork Interface's radius is twice it. A zoom blur stays a plain blur of half its radius.
 #[test]
 fn blur_radii_are_deviations() {
     let blur = |ty: i64| json!({"_class": "blur", "isEnabled": true, "radius": 6, "type": ty});
@@ -406,7 +406,7 @@ fn bitmap_brightness_adds_after_contrast() {
         let (doc, _) = open_doc(document(&["P"]), vec![bitmap], &[("images/a.png", &png)]);
         let PaintKind::Image(img) = &node(&doc, "Photo").fills[0].kind else { panic!("no image") };
         let (e, c) = (2f64.powf(f64::from(img.filters.exposure) * 2.0), 1.0 + f64::from(img.filters.contrast));
-        // Past FigCraft's ranges the slope stays exact and only the offset gives.
+        // Past crocwork Interface's ranges the slope stays exact and only the offset gives.
         assert!((e * c - contrast).abs() < 1e-4, "{brightness} {contrast}: slope {}", e * c);
         if !(-0.5..=0.375).contains(&brightness) {
             continue;
@@ -470,7 +470,7 @@ fn faded_masks_fade_what_they_clip() {
     assert!((alpha_parent.opacity - 1.0).abs() < 1e-6, "{}", alpha_parent.opacity);
 }
 
-/// `colorInterpolation` 1 mixes a gradient in OKLab, 2 in OKLCH; FigCraft gets sRGB stops along
+/// `colorInterpolation` 1 mixes a gradient in OKLab, 2 in OKLCH; crocwork Interface gets sRGB stops along
 /// the same colours (values from Sketch's render of this gradient), and a note.
 #[test]
 fn oklab_gradients_become_srgb_stops() {

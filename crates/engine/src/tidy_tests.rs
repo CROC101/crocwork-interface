@@ -1,7 +1,7 @@
 //! Tidy up (`arrange.tidy`) against what was measured in Figma's web app on 2026-11-12: a row, a
 //! column and a 2 x 3 grid of unequal sizes, eight runs on the gap, and the cases where the menu
 //! row is greyed out. Figma keeps the order and sizes, evens one gap per axis and keeps the first
-//! layer where it is. Tests whose message says "not measured in Figma" pin FigCraft's own choice.
+//! layer where it is. Tests whose message says "not measured in Figma" pin crocwork Interface's own choice.
 
 use crate::Session;
 use figcraft_doc::NodeId;

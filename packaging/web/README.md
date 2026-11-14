@@ -1,4 +1,4 @@
-# Hosting FigCraft for the web
+# Hosting crocwork Interface for the web
 
 `figcraft-web-<version>.zip` (from the GitHub release, or `packaging/web/package.sh`) holds a
 static site in `figcraft-web-<version>/`:
@@ -70,7 +70,7 @@ hash, so they can be cached forever. Only `index.html` needs revalidation.
   `.js` files, and `no-cache` on `index.html`.
 - **HTTPS:** WebGPU (and the clipboard) only work in a secure context, which means `https://`
   or `http://localhost`. Over plain HTTP elsewhere, the app falls back to WebGL2.
-- **No special isolation headers:** FigCraft doesn't use `SharedArrayBuffer`, so it doesn't
+- **No special isolation headers:** crocwork Interface doesn't use `SharedArrayBuffer`, so it doesn't
   need `Cross-Origin-Opener-Policy` or `Cross-Origin-Embedder-Policy`. If your site already sends
   COEP `require-corp`, also send `Cross-Origin-Resource-Policy: same-origin` (or `cross-origin`
   when the files live on a CDN) on the app's files.
@@ -94,7 +94,7 @@ Local test: `python3 -m http.server 8767` inside the folder, then open http://lo
 ```html
 <iframe
   src="https://example.com/figcraft/"
-  title="FigCraft interface design tool"
+  title="crocwork Interface interface design tool"
   style="width: 100%; height: 720px; border: 0;"
   allow="fullscreen; clipboard-read; clipboard-write"
   allowfullscreen>
@@ -109,7 +109,7 @@ Local test: `python3 -m http.server 8767` inside the folder, then open http://lo
 
 ## Host mode (`?host=parent`, or the page's own document)
 
-A page can embed FigCraft so that it hands files over instead of downloading them and reports
+A page can embed crocwork Interface so that it hands files over instead of downloading them and reports
 unsaved changes. Two opt-in transports carry the same messages:
 
 - **`?host=parent`** on the iframe's URL (`https://example.com/figcraft/?host=parent`): a
@@ -140,7 +140,7 @@ comments and board notes.
 
 ### Same-document host mode
 
-The host application loads the wasm-bindgen module itself and gives FigCraft one of its own
+The host application loads the wasm-bindgen module itself and gives crocwork Interface one of its own
 canvases, so there is no iframe and no `?host=parent`. It opts in with `data-host="page"` on that
 canvas — the exact value `page` — and the canvas keeps the id the app looks up
 (`id="figcraft_canvas"`):
@@ -172,7 +172,7 @@ canvas.addEventListener("figcraft:ready", async () => {
   }));
 });
 
-// Every file FigCraft would otherwise download arrives here.
+// Every file crocwork Interface would otherwise download arrives here.
 canvas.addEventListener("figcraft:save", (event) => {
   const { name, saveAs, bytes } = event.detail; // bytes is an ArrayBuffer
   // Store the file under `name`; `saveAs` says whether it becomes the document's file.
@@ -197,17 +197,17 @@ await init({ module_or_path: "./figcraft-web-<hash>_bg.wasm" });
   present it takes precedence, so a same-origin framed page uses the parent bridge, while an
   unframed or cross-origin page gets no bridge and keeps normal downloads.
 
-The messages and both transports are the shared contract of [`craft-web-host`](https://github.com/storytold/craft-libs/tree/main/crates/web-host) (storytold/craft-libs#420), the same for every Craft app: its README lists every message, including `saved`, with the compatibility notes. In `figcraft:ready`, `version` is the contract's (`"1"`) and `appVersion` is this app's release. FigCraft reads bytes, so a host sends `bytes`, not a `File`.
+The messages and both transports are the shared contract of [`craft-web-host`](https://github.com/storytold/craft-libs/tree/main/crates/web-host) (storytold/craft-libs#420), the same for every Craft app: its README lists every message, including `saved`, with the compatibility notes. In `figcraft:ready`, `version` is the contract's (`"1"`) and `appVersion` is this app's release. crocwork Interface reads bytes, so a host sends `bytes`, not a `File`.
 
 ### Trust and limits
 
-- **Who is trusted.** In page host mode the page and FigCraft share one document, so any script on the page can drive the app: open files in it and receive what it saves. Use this mode only for a page you control. The iframe mode (`?host=parent`) answers only the parent window, on the page's own origin.
+- **Who is trusted.** In page host mode the page and crocwork Interface share one document, so any script on the page can drive the app: open files in it and receive what it saves. Use this mode only for a page you control. The iframe mode (`?host=parent`) answers only the parent window, on the page's own origin.
 - **Files from the host are untrusted input.** An opened file goes through the same reading as one picked with File ▸ Open or dropped on the window, with the same format limits; before it is copied into the app's memory, its size is checked against the host open limit (512 MB) and a larger file is refused, and a name is cut to 255 characters.
 - **The event and message names are the interface.** `figcraft:ready`, `figcraft:open`, `figcraft:save`, `figcraft:dirty` and `figcraft:failed`, and the fields they carry (the same as the `?host=parent` messages), stay stable; changing one is a breaking change.
 
 ## Renderer selection and fallback flags
 
-FigCraft renders with wgpu. It uses **WebGPU** when the browser has it and falls back to
+crocwork Interface renders with wgpu. It uses **WebGPU** when the browser has it and falls back to
 **WebGL2** on its own. A URL query flag overrides this, and it works on the iframe `src` too:
 
 | Flag | Effect |

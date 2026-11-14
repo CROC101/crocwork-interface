@@ -1,5 +1,5 @@
 #!/bin/sh
-# FigCraft AppImage entry point (packaging/linux/AppRun; installed by package.sh).
+# crocwork Interface AppImage entry point (packaging/linux/AppRun; installed by package.sh).
 #
 # On Wayland the compositor resolves a window's dock icon by taking the window's
 # app_id (ai.storyteller.figcraft) and looking up an installed .desktop file.
@@ -9,7 +9,7 @@
 # hicolor icons into $XDG_DATA_HOME, then launch. Every failure here must leave
 # the launch untouched. Opt out with FIGCRAFT_NO_DESKTOP_INTEGRATION=1.
 #
-# `FigCraft.AppImage cli <args>` runs the bundled headless figcraft-cli with <args>
+# `crocwork Interface.AppImage cli <args>` runs the bundled headless figcraft-cli with <args>
 # (e.g. `cli mcp`) instead of the app, without touching the desktop.
 
 set -u

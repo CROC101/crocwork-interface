@@ -235,7 +235,7 @@ fn open_operands_of_booleans_are_closed() {
 }
 
 /// Sketch draws a shape group in the group's style only: its operands' own borders go, so a
-/// FigCraft operand gives its area to the operation, not a stroke's band.
+/// crocwork Interface operand gives its area to the operation, not a stroke's band.
 #[test]
 fn shape_group_operands_lose_their_borders() {
     let border = json!([{"_class": "border", "isEnabled": true, "fillType": 0, "color": color(0.0, 0.0, 0.0, 1.0), "position": 0, "thickness": 8}]);
